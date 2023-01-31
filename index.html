@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnceStone</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+
+    <section class="content">        
+        
+        <div id="map">
+            <iframe src="map/index.html" title="map"></iframe>
+        </div>
+
+        <div id="camera" class="hidden">
+            <iframe src="ar/index.html" title="camera"></iframe>
+        </div>
+    
+    </section>
+
+    <nav class="nav">
+        <a href="#" class="nav__link nav__link--active" id="map-tab">
+            <i class="material-icons nav__icon">map</i>
+            <span class="nav__text">Map</span>
+        </a>
+        <a href="#" class="nav__link" id="camera-tab">
+            <i class="material-icons nav__icon">camera</i>
+            <span class="nav__text">Camera</span>
+        </a>
+    </nav>
+
+    <script>
+        var navItems = document.querySelectorAll(".nav__link");
+        var camera = document.getElementById("camera");
+        var home = document.getElementById("map");
+
+        navItems.forEach(function (e, i) {
+            e.addEventListener("click", function (e) {
+                navItems.forEach(function (e2, i2) {
+                    e2.classList.remove("nav__link--active");
+                });
+                this.classList.add("nav__link--active");
+
+                if (this.id == "map-tab") {
+                    camera.classList.add("hidden");
+                    home.classList.remove("hidden");
+                }
+                if (this.id == "camera-tab") {
+                    camera.classList.remove("hidden");
+                    home.classList.add("hidden");
+                }
+            });
+        });
+
+        function resizeIFrameToFitContent(iFrame) {
+            iFrame.height = document.documentElement.scrollHeight - 60;
+        }
+
+        window.addEventListener('DOMContentLoaded', function (e) {
+            var iframes = document.querySelectorAll("iframe");
+            for (var i = 0; i < iframes.length; i++) {
+                resizeIFrameToFitContent(iframes[i]);
+            }
+        });
+    </script>
+
+</body>
+</html>

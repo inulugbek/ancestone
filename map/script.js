@@ -289,14 +289,19 @@ function initMap() {
 
     // markers of stones
     var markers = [
-        ['1', 48.1450513671584, 11.5803776369163],
-        ['2', 48.1455099519885, 11.5785406029775],
-        ['3', 48.1439584615596, 11.5783350607186],
+        [48.139188, 11.56098, 'Helene Simons', "assets/1.jpg", "*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS"],
+        [48.140536, 11.593462, 'Else Basch', "assets/2.jpg", "*1878 - 18.6.1944; DEPORTIERT 1942 THERESIENSTADT"],
+        [48.157657, 11.580811, 'Joseph Schuster', "assets/3.png", "*1873 - 23.1.1943; DEPORTIERT 1942 THERESIENSTADT"],
+        [48.122089, 11.543811, 'Emanuel Gutmann', "assets/4.jpg", "*1873 – 1943; DEPORTIERT 1942 THERESIENSTADT"],
+        [48.12004, 11.549581, 'Simon Berger', "assets/5.jpg", "*1896 - 25.11.1941; DEPORTIERT KAUNAS"],
     ];
 
     for (i = 0; i < markers.length; i++) {
-        var lat = markers[i][1];
-        var lng = markers[i][2];
+        var lat = markers[i][0];
+        var lng = markers[i][1];
+        var name = markers[i][2];
+        var imgSrc = markers[i[3]];
+        var desc = markers[i[4]];
 
         marker = new google.maps.Marker({
                     position: new google.maps.LatLng(lat, lng),
@@ -308,9 +313,36 @@ function initMap() {
                     },
                 });
 
+
+
         google.maps.event.addDomListener(marker, 'click', function() {
-            var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
-            window.open(url, '_blank');
+            var card = document.createElement("div");
+            card.className = "card";
+            
+            var img = document.createElement("img");
+            img.src = imgSrc;
+            
+            var container = document.createElement("div");
+            var h4 = document.createElement("h4");
+            var b = document.createElement("b");
+            b.textContent = name;
+            h4.appendChild(b);
+            
+            var p = document.createElement("p");
+            p.textContent = desc;
+            
+            container.appendChild(h4);
+            container.appendChild(p);
+            
+            card.appendChild(img);
+            card.appendChild(container);
+
+            card.onclick = function() {
+                var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
+                window.open(url, '_blank');
+              };
+            
+            document.body.appendChild(card);
         });
     }
 

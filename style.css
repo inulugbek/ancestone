@@ -94,3 +94,30 @@ button {
     color: white;
     z-index: 999999;
 }
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 80%;
+    border-radius: 5px;
+    height: 116px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 20px auto;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card img {
+    border-radius: 5px 5px 0 0;
+    float: left;
+    height: 100px;
+    margin: 8px 16px 8px 8px;
+  }
+  
+  .container {
+    padding: 16px;
+  }

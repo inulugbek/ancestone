@@ -317,8 +317,6 @@ function initMap() {
     }
 
     for (var i =0; i < markers.length; i++) {
-        var lat = locations[i][0];
-        var lng = locations[i][1];
         var name = locations[i][2];
         var image = locations[i][3];
         var info = locations[i][4];
@@ -330,41 +328,35 @@ function initMap() {
                 card.remove();
             }
 
-            createCard(name, image, info, markers[i].url);
+            var card = document.createElement("div");
+            card.className = "card";
+            card.style.display = "none";
+          
+            var img = document.createElement("img");
+            img.src = image;
+            img.alt = "Avatar";
+          
+            var container = document.createElement("div");
+            var h4 = document.createElement("h4");
+            var b = document.createElement("b");
+            b.textContent = name;
+            h4.appendChild(b);
+          
+            var p = document.createElement("p");
+            p.textContent = info;
+    
+            container.appendChild(h4);
+            container.appendChild(p);
+    
+            card.innerHTML = "";
+            card.appendChild(img);
+            card.appendChild(container);
+    
+            card.onclick = function() {
+                window.open(markers[i].url, '_blank');
+            };
         });
     }
-    
-    function createCard(name, image, info, url) {
-        var card = document.createElement("div");
-        card.className = "card";
-        card.style.display = "none";
-      
-        var img = document.createElement("img");
-        img.src = image;
-        img.alt = "Avatar";
-      
-        var container = document.createElement("div");
-        var h4 = document.createElement("h4");
-        var b = document.createElement("b");
-        b.textContent = name;
-        h4.appendChild(b);
-      
-        var p = document.createElement("p");
-        p.textContent = info;
-
-        container.appendChild(h4);
-        container.appendChild(p);
-
-        card.innerHTML = "";
-        card.appendChild(img);
-        card.appendChild(container);
-
-        card.onclick = function() {
-            window.open(url, '_blank');
-        };
-      }
-
-
 
     // for (i = 0; i < locations.length; i++) {
     //     var lat = locations[i][0];

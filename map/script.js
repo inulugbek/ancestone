@@ -288,7 +288,7 @@ function initMap() {
     infoWindow = new google.maps.InfoWindow();
 
     // markers of stones
-    var markers = [
+    var locations = [
         [48.139188, 11.56098, 'Helene Simons', 'assets/1.jpg', '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS'],
         [48.140536, 11.593462, 'Else Basch', 'assets/2.jpg', '*1878 - 18.6.1944; DEPORTIERT 1942 THERESIENSTADT'],
         [48.157657, 11.580811, 'Joseph Schuster', 'assets/3.png', '*1873 - 23.1.1943; DEPORTIERT 1942 THERESIENSTADT'],
@@ -296,14 +296,13 @@ function initMap() {
         [48.12004, 11.549581, 'Simon Berger', 'assets/5.jpg', '*1896 - 25.11.1941; DEPORTIERT KAUNAS'],
     ];
 
-    for (i = 0; i < markers.length; i++) {
-        var lat = markers[i][0];
-        var lng = markers[i][1];
-        var name = markers[i][2];
-        var imgSrc = markers[i][3];
-        var desc = markers[i][4];
+    var markers = [];
 
-        marker = new google.maps.Marker({
+    for (i = 0; i < locations.length; i++) {
+        var lat = locations[i][0];
+        var lng = locations[i][1];
+
+        var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(lat, lng),
                     map: map,
                     icon: {
@@ -313,7 +312,17 @@ function initMap() {
                     },
                 });
 
-        google.maps.event.addDomListener(marker, 'click', function() {
+        markers.push(marker);
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            var lat = locations[i][0];
+            var lng = locations[i][1];
+            var name = locations[i][2];
+            var imgSrc = locations[i][3];
+            var desc = locations[i][4];
+
+            console.log(marker[i].getPosition());
+
             var card = document.querySelector(".card");
 
             if (!card) {
@@ -345,7 +354,7 @@ function initMap() {
             card.innerHTML = "";
             card.appendChild(img);
             card.appendChild(container);
-        });
+        })(marker, i));
     }
 
 

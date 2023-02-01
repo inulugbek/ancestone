@@ -1,10 +1,42 @@
-let maps;
+const markers = [];
 
-var markers = [];
+const createElement = (marker) => {
+    console.log(marker);
+    let name = marker.title;
+    let image = marker.image;
+    let info = marker.info;
+
+    let card = document.createElement("div");
+    card.classList.add("card");
+    document.body.appendChild(card);
+    
+    let imageEl = document.createElement("img");
+    imageEl.src = image;
+    imageEl.alt = "Avatar";
+    
+    let container = document.createElement("div");
+    let heading = document.createElement("h4");
+    let boldText = document.createElement("b");
+    boldText.textContent = name;
+    heading.appendChild(boldText);
+    
+    let paragraph = document.createElement("p");
+    paragraph.textContent = info;
+
+    container.appendChild(heading);
+    container.appendChild(paragraph);
+
+    card.innerHTML = "";
+    card.appendChild(imageEl);
+    card.appendChild(container);
+
+    card.addEventListener('click', () => {
+        window.open(markers[i].url, '_blank');
+    });
+}
 
 function initMap() {
-
-    var mapStyle = [
+    const mapStyle = [
         {
         "elementType": "geometry",
         "stylers": [
@@ -109,9 +141,9 @@ function initMap() {
         ]
         },
         {
-        featureType: "poi.business",
-        elementType: "labels",
-        stylers: [
+        "featureType": "poi.business",
+        "elementType": "labels",
+        "stylers": [
             { 
             "visibility": "off" 
             }
@@ -272,7 +304,7 @@ function initMap() {
         }
     ];
 
-    map = new google.maps.Map(document.getElementById("googleMap"), {
+    const map = new google.maps.Map(document.getElementById("googleMap"), {
         center: { lat: 48.1423965, lng: 11.5757072 },
         zoom: 15,
         styles: mapStyle,
@@ -288,24 +320,54 @@ function initMap() {
     });
 
     // markers of stones
-    var locations = [
-        [48.139188, 11.56098, 'Helene Simons', 'assets/1.jpg', '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS'],
-        [48.140536, 11.593462, 'Else Basch', 'assets/2.jpg', '*1878 - 18.6.1944; DEPORTIERT 1942 THERESIENSTADT'],
-        [48.157657, 11.580811, 'Joseph Schuster', 'assets/3.png', '*1873 - 23.1.1943; DEPORTIERT 1942 THERESIENSTADT'],
-        [48.122089, 11.543811, 'Emanuel Gutmann', 'assets/4.jpg', '*1873 – 1943; DEPORTIERT 1942 THERESIENSTADT'],
-        [48.12004, 11.549581, 'Simon Berger', 'assets/5.jpg', '*1896 - 25.11.1941; DEPORTIERT KAUNAS'],
+    const locations = [
+        {
+            lat: 48.139188,
+            lng: 11.56098,
+            name: 'Helene Simons',
+            image: 'assets/1.jpg',
+            info: '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS'
+        },
+        {
+            lat: 48.140536,
+            lng: 11.593462,
+            name: 'Else Basch',
+            image: 'assets/2.jpg',
+            info: '*1878 - 18.6.1944; DEPORTIERT 1942 THERESIENSTADT'
+        },
+        {
+            lat: 48.157657,
+            lng: 11.580811,
+            name: 'Joseph Schuster',
+            image: 'assets/3.png',
+            info: '*1873 - 23.1.1943; DEPORTIERT 1942 THERESIENSTADT'
+        },
+        {
+            lat: 48.122089,
+            lng: 11.543811,
+            name: 'Emanuel Gutmann',
+            image: 'assets/5.jpg',
+            info: '*1873 – 1943; DEPORTIERT 1942 THERESIENSTADT'
+        },
+        {
+            lat: 48.12004,
+            lng: 11.549581,
+            name: 'Simon Berger',
+            image: 'assets/5.jpg',
+            info: '*1896 - 25.11.1941; DEPORTIERT KAUNAS'
+        },
     ];
 
-
-    for (var i = 0; i < locations.length; i++) {
-        var location = locations[i];
-        var lat = location[0];
-        var lng = location[1];
-
-        var marker = new google.maps.Marker({
-            position: {lat: lat, lng: lng},
+    locations.forEach(location => {
+        let marker = new google.maps.Marker({
+            position: {
+                lat: location.lat, 
+                lng: location.lng
+            },
             map: map,
-            title: name,
+            title: location.name,
+            image: location.image,
+            info: location.info,
             icon: {
                 size: new google.maps.Size(15, 30),
                 scaledSize: new google.maps.Size(15, 30),
@@ -314,105 +376,18 @@ function initMap() {
         });
 
         markers.push(marker);
-    }
+    });
 
-    for (var i =0; i < markers.length; i++) {
-        var name = locations[i][2];
-        var image = locations[i][3];
-        var info = locations[i][4];
-        var marker = markers[i];
-
+    markers.forEach((marker) => {
         google.maps.event.addListener(marker, 'click', function() {
-            var card = document.querySelector(".card");
+            let card = document.querySelector(".card");
 
             if (card) {
                 card.remove();
             }
 
-            var card = document.createElement("div");
-            card.className = "card";
-            card.style.display = "none";
-          
-            var img = document.createElement("img");
-            img.src = image;
-            img.alt = "Avatar";
-          
-            var container = document.createElement("div");
-            var h4 = document.createElement("h4");
-            var b = document.createElement("b");
-            b.textContent = name;
-            h4.appendChild(b);
-          
-            var p = document.createElement("p");
-            p.textContent = info;
-    
-            container.appendChild(h4);
-            container.appendChild(p);
-    
-            card.innerHTML = "";
-            card.appendChild(img);
-            card.appendChild(container);
-    
-            card.onclick = function() {
-                window.open(markers[i].url, '_blank');
-            };
+            createElement(marker);
         });
-    }
 
-    // for (i = 0; i < locations.length; i++) {
-    //     var lat = locations[i][0];
-    //     var lng = locations[i][1];
-
-    //     var marker = new google.maps.Marker({
-    //                 position: new google.maps.LatLng(lat, lng),
-    //                 map: map,
-    //                 icon: {
-    //                     size: new google.maps.Size(15, 30),
-    //                     scaledSize: new google.maps.Size(15, 30),
-    //                     url: 'assets/pin.png'
-    //                 },
-    //             });
-
-    //     markers.push(marker);
-
-    //     google.maps.event.addListener(marker, 'click', (function(marker, i) {
-    //         var lat = locations[i][0];
-    //         var lng = locations[i][1];
-    //         var name = locations[i][2];
-    //         var imgSrc = locations[i][3];
-    //         var desc = locations[i][4];
-
-    //         var card = document.querySelector(".card");
-
-    //         if (!card) {
-    //             card = document.createElement("div");
-    //             card.className = "card";
-    //             card.onclick = function() {
-    //                 var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
-    //                 window.open(url, '_blank');
-    //             };
-                
-    //             document.body.appendChild(card);
-    //         }
-
-    //         var img = document.createElement("img");
-    //         img.src = imgSrc;
-
-    //         var container = document.createElement("div");
-    //         var h4 = document.createElement("h4");
-    //         var b = document.createElement("b");
-    //         b.textContent = name;
-    //         h4.appendChild(b);
-            
-    //         var p = document.createElement("p");
-    //         p.textContent = desc;
-
-    //         container.appendChild(h4);
-    //         container.appendChild(p);
-
-    //         card.innerHTML = "";
-    //         card.appendChild(img);
-    //         card.appendChild(container);
-    //     })(marker, i));
-    // }
+    });
 }

@@ -320,8 +320,9 @@ function initMap() {
         var name = locations[i][2];
         var image = locations[i][3];
         var info = locations[i][4];
+        var marker = markers[i];
 
-        markers[i].addListener('click', function() {
+        google.maps.event.addListener(marker, 'click', function() {
             var card = document.querySelector(".card");
 
             if (card) {

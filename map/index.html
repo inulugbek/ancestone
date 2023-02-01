@@ -343,13 +343,16 @@
                         position: new google.maps.LatLng(markers[i][1], markers[i][2]),
                         map: map,
                         icon: {
-                            size: new google.maps.Size(10, 20),
-                            scaledSize: new google.maps.Size(10, 20),
+                            size: new google.maps.Size(15, 30),
+                            scaledSize: new google.maps.Size(15, 30),
                             url: 'pin.png' 
                         },
                     });
-        }
 
+            google.maps.event.addDomListener(marker, 'click', function() {
+                window.open('https://www.google.com/maps/search/' + markers[i[1]] + "," + markers[i][2])
+            });
+        }
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {

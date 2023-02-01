@@ -342,7 +342,11 @@
             marker = new google.maps.Marker({
                         position: new google.maps.LatLng(markers[i][1], markers[i][2]),
                         map: map,
-                        // icon: 'pin.png',
+                        icon: {
+                            size: new google.maps.Size(10, 20),
+                            scaledSize: new google.maps.Size(10, 20),
+                            url: 'pin.png' 
+                        },
                     });
         }
 
@@ -361,6 +365,6 @@
     window.initMap = initMap;
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAALok58qGUjQXYU-r8VVca17GxWOAMTHA-po&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAALok58qGUjQXYU-r8VVca17GxWOAMTHA&callback=initMap"></script>
 </body>
 </html> 

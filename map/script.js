@@ -301,9 +301,6 @@ function initMap() {
         var location = locations[i];
         var lat = location[0];
         var lng = location[1];
-        var name = location[2];
-        var image = location[3];
-        var info = location[4];
 
         var marker = new google.maps.Marker({
             position: {lat: lat, lng: lng},
@@ -317,79 +314,55 @@ function initMap() {
         });
 
         markers.push(marker);
+    }
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                var card = document.querySelector(".card");
+    for (var i =0; i < markers.length; i++) {
+        var lat = locations[i][0];
+        var lng = locations[i][1];
+        var name = locations[i][2];
+        var image = locations[i][3];
+        var info = locations[i][4];
 
-                if (card) {
-                    card.remove();
-                }
-                
-                card = document.createElement("div");
-                card.className = "card";
-                card.onclick = function() {
-                  window.open("https://www.google.com/maps/search/" + lat + "," + lng);
-                };
-        
-                document.body.appendChild(card);
-        
-                var img = document.createElement("img");
-                img.src = image;
-                img.alt = name;
+        markers[i].addListener('click', function() {
+            var card = document.querySelector(".card");
 
-                var container = document.createElement("div");
-                var h4 = document.createElement("h4");
-                var b = document.createElement("b");
-                b.textContent = name;
-                h4.appendChild(b);
+            if (card) {
+                card.remove();
+            }
 
-                var p = document.createElement("p");
-                p.textContent = info;
-
-                container.appendChild(h4);
-                container.appendChild(p);
-
-                card.innerHTML = "";
-                card.appendChild(img);
-                card.appendChild(container);
-            };
-            })(marker, i));
-        }
+            createCard(name, image, info, markers[i].url);
+        });
+    }
     
-
-
-    //   function createCard(name, image, info) {
-    //     var card = document.createElement("div");
-    //     card.className = "card";
-    //     card.style.display = "none";
+    function createCard(name, image, info, url) {
+        var card = document.createElement("div");
+        card.className = "card";
+        card.style.display = "none";
       
-    //     var img = document.createElement("img");
-    //     img.src = image;
-    //     img.alt = "Avatar";
+        var img = document.createElement("img");
+        img.src = image;
+        img.alt = "Avatar";
       
-    //     var container = document.createElement("div");
-    //     var h4 = document.createElement("h4");
-    //     var b = document.createElement("b");
-    //     b.textContent = name;
-    //     h4.appendChild(b);
+        var container = document.createElement("div");
+        var h4 = document.createElement("h4");
+        var b = document.createElement("b");
+        b.textContent = name;
+        h4.appendChild(b);
       
-    //     var p = document.createElement("p");
-    //     p.textContent = info;
+        var p = document.createElement("p");
+        p.textContent = info;
 
-    //     container.appendChild(h4);
-    //     container.appendChild(p);
+        container.appendChild(h4);
+        container.appendChild(p);
 
-    //     card.innerHTML = "";
-    //     card.appendChild(img);
-    //     card.appendChild(container);
+        card.innerHTML = "";
+        card.appendChild(img);
+        card.appendChild(container);
 
-    //     card.onclick = function() {
-    //         var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
-    //         window.open(url, '_blank');
-    //     };
-
-    //   }
+        card.onclick = function() {
+            window.open(url, '_blank');
+        };
+      }
 
 
 

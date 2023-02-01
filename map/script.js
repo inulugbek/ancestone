@@ -300,8 +300,8 @@ function initMap() {
         var lat = markers[i][0];
         var lng = markers[i][1];
         var name = markers[i][2];
-        var imgSrc = markers[i[3]];
-        var desc = markers[i[4]];
+        var imgSrc = markers[i][3];
+        var desc = markers[i][4];
 
         marker = new google.maps.Marker({
                     position: new google.maps.LatLng(lat, lng),

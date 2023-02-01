@@ -1,4 +1,6 @@
-let map, infoWindow;
+let maps;
+
+var markers = [];
 
 function initMap() {
 
@@ -285,8 +287,6 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    infoWindow = new google.maps.InfoWindow();
-
     // markers of stones
     var locations = [
         [48.139188, 11.56098, 'Helene Simons', 'assets/1.jpg', '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS'],
@@ -296,111 +296,159 @@ function initMap() {
         [48.12004, 11.549581, 'Simon Berger', 'assets/5.jpg', '*1896 - 25.11.1941; DEPORTIERT KAUNAS'],
     ];
 
-    var markers = [];
 
-    for (i = 0; i < locations.length; i++) {
-        var lat = locations[i][0];
-        var lng = locations[i][1];
+
+    for (var i = 0; i < locations.length; i++) {
+        var location = locations[i];
+        var lat = location[0];
+        var lng = location[1];
+        var name = location[2];
+        var image = location[3];
+        var info = location[4];
 
         var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(lat, lng),
-                    map: map,
-                    icon: {
-                        size: new google.maps.Size(15, 30),
-                        scaledSize: new google.maps.Size(15, 30),
-                        url: 'assets/pin.png'
-                    },
-                });
+            position: {lat: lat, lng: lng},
+            map: map,
+            title: name,
+            icon: {
+                size: new google.maps.Size(15, 30),
+                scaledSize: new google.maps.Size(15, 30),
+                url: 'assets/pin.png'
+            },
+        });
 
         markers.push(marker);
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            var lat = locations[i][0];
-            var lng = locations[i][1];
-            var name = locations[i][2];
-            var imgSrc = locations[i][3];
-            var desc = locations[i][4];
+            return function() {
+                var card = document.querySelector(".card");
 
-            var card = document.querySelector(".card");
+                if (!card) {
+                    card = document.createElement("div");
+                    card.className = "card";
+                    card.onclick = function() {
+                        window.open("https://www.google.com/maps/search/" + lat + "," + lng);
+                    };
 
-            if (!card) {
-                card = document.createElement("div");
-                card.className = "card";
-                card.onclick = function() {
-                    var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
-                    window.open(url, '_blank');
-                };
-                
-                document.body.appendChild(card);
-            }
+                    document.body.appendChild(card);
+                }
 
-            var img = document.createElement("img");
-            img.src = imgSrc;
+                var img = document.createElement("img");
+                img.src = image;
+                img.alt = name;
 
-            var container = document.createElement("div");
-            var h4 = document.createElement("h4");
-            var b = document.createElement("b");
-            b.textContent = name;
-            h4.appendChild(b);
-            
-            var p = document.createElement("p");
-            p.textContent = desc;
+                var container = document.createElement("div");
+                var h4 = document.createElement("h4");
+                var b = document.createElement("b");
+                b.textContent = name;
+                h4.appendChild(b);
 
-            container.appendChild(h4);
-            container.appendChild(p);
+                var p = document.createElement("p");
+                p.textContent = info;
 
-            card.innerHTML = "";
-            card.appendChild(img);
-            card.appendChild(container);
-        })(marker, i));
-    }
+                container.appendChild(h4);
+                container.appendChild(p);
 
-
-    // my location button
-    // const locationButton = document.createElement("div");
-    // const locationIcon = document.createElement("i");
-    // locationIcon.classList.add("material-icons nav__icon");
-    // locationButton.children.add(locationIcon);
-    // locationButton.id.add("my-position-button");
-
-    // map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(locationButton);
+                card.innerHTML = "";
+                card.appendChild(img);
+                card.appendChild(container);
+            };
+            })(marker, i));
+        }
     
-    // locationButton.addEventListener("click", () => {
-    //     // Try HTML5 geolocation.
-    //     if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(
-    //         (position) => {
-    //         const pos = {
-    //             lat: position.coords.latitude,
-    //             lng: position.coords.longitude,
-    //         };
 
-    //         infoWindow.setPosition(pos);
-    //         infoWindow.setContent("Location found.");
-    //         infoWindow.open(map);
-    //         map.setCenter(pos);
-    //         },
-    //         () => {
-    //         handleLocationError(true, infoWindow, map.getCenter());
+
+    //   function createCard(name, image, info) {
+    //     var card = document.createElement("div");
+    //     card.className = "card";
+    //     card.style.display = "none";
+      
+    //     var img = document.createElement("img");
+    //     img.src = image;
+    //     img.alt = "Avatar";
+      
+    //     var container = document.createElement("div");
+    //     var h4 = document.createElement("h4");
+    //     var b = document.createElement("b");
+    //     b.textContent = name;
+    //     h4.appendChild(b);
+      
+    //     var p = document.createElement("p");
+    //     p.textContent = info;
+
+    //     container.appendChild(h4);
+    //     container.appendChild(p);
+
+    //     card.innerHTML = "";
+    //     card.appendChild(img);
+    //     card.appendChild(container);
+
+    //     card.onclick = function() {
+    //         var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
+    //         window.open(url, '_blank');
+    //     };
+
+    //   }
+
+
+
+
+
+
+    // for (i = 0; i < locations.length; i++) {
+    //     var lat = locations[i][0];
+    //     var lng = locations[i][1];
+
+    //     var marker = new google.maps.Marker({
+    //                 position: new google.maps.LatLng(lat, lng),
+    //                 map: map,
+    //                 icon: {
+    //                     size: new google.maps.Size(15, 30),
+    //                     scaledSize: new google.maps.Size(15, 30),
+    //                     url: 'assets/pin.png'
+    //                 },
+    //             });
+
+    //     markers.push(marker);
+
+    //     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //         var lat = locations[i][0];
+    //         var lng = locations[i][1];
+    //         var name = locations[i][2];
+    //         var imgSrc = locations[i][3];
+    //         var desc = locations[i][4];
+
+    //         var card = document.querySelector(".card");
+
+    //         if (!card) {
+    //             card = document.createElement("div");
+    //             card.className = "card";
+    //             card.onclick = function() {
+    //                 var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
+    //                 window.open(url, '_blank');
+    //             };
+                
+    //             document.body.appendChild(card);
     //         }
-    //     );
-    //     } else {
-    //     // Browser doesn't support Geolocation
-    //     handleLocationError(false, infoWindow, map.getCenter());
-    //     }
-    // });
 
+    //         var img = document.createElement("img");
+    //         img.src = imgSrc;
+
+    //         var container = document.createElement("div");
+    //         var h4 = document.createElement("h4");
+    //         var b = document.createElement("b");
+    //         b.textContent = name;
+    //         h4.appendChild(b);
+            
+    //         var p = document.createElement("p");
+    //         p.textContent = desc;
+
+    //         container.appendChild(h4);
+    //         container.appendChild(p);
+
+    //         card.innerHTML = "";
+    //         card.appendChild(img);
+    //         card.appendChild(container);
+    //     })(marker, i));
+    // }
 }
-
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(
-        browserHasGeolocation
-        ? "Error: The Geolocation service failed."
-        : "Error: Your browser doesn't support geolocation."
-    );
-    infoWindow.open(map);
-}
-
-window.initMap = initMap;

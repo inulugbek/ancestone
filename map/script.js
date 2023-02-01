@@ -31,7 +31,7 @@ const createElement = (marker) => {
     card.appendChild(container);
 
     card.addEventListener('click', () => {
-        window.open(markers[i].url, '_blank');
+        window.open(marker.url, '_blank');
     });
 }
 

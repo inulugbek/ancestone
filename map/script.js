@@ -295,8 +295,11 @@ function initMap() {
     ];
 
     for (i = 0; i < markers.length; i++) {
+        var lat = markers[i][1];
+        var lng = markers[i][2];
+
         marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(markers[i][1], markers[i][2]),
+                    position: new google.maps.LatLng(lat, lng),
                     map: map,
                     icon: {
                         size: new google.maps.Size(15, 30),
@@ -306,7 +309,7 @@ function initMap() {
                 });
 
         google.maps.event.addDomListener(marker, 'click', function() {
-            var url = 'https://www.google.com/maps/search/' + markers[i[1]] + "," + markers[i][2];
+            var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
             window.open(url, '_blank');
         });
     }

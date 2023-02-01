@@ -368,7 +368,7 @@ function initMap() {
             title: location.name,
             image: location.image,
             info: location.info,
-            url: 'https://www.google.com/maps/search/' + '${location.lat}' + ',' + '${location.lng}',
+            url: `https://www.google.com/maps/search/ + ${location.lat} + , + ${location.lng}`,
             icon: {
                 size: new google.maps.Size(15, 30),
                 scaledSize: new google.maps.Size(15, 30),

@@ -297,7 +297,6 @@ function initMap() {
     ];
 
 
-
     for (var i = 0; i < locations.length; i++) {
         var location = locations[i];
         var lat = location[0];
@@ -323,16 +322,18 @@ function initMap() {
             return function() {
                 var card = document.querySelector(".card");
 
-                if (!card) {
-                    card = document.createElement("div");
-                    card.className = "card";
-                    card.onclick = function() {
-                        window.open("https://www.google.com/maps/search/" + lat + "," + lng);
-                    };
-
-                    document.body.appendChild(card);
+                if (card) {
+                    card.remove();
                 }
-
+                
+                card = document.createElement("div");
+                card.className = "card";
+                card.onclick = function() {
+                  window.open("https://www.google.com/maps/search/" + lat + "," + lng);
+                };
+        
+                document.body.appendChild(card);
+        
                 var img = document.createElement("img");
                 img.src = image;
                 img.alt = name;
@@ -389,9 +390,6 @@ function initMap() {
     //     };
 
     //   }
-
-
-
 
 
 

@@ -350,7 +350,8 @@
                     });
 
             google.maps.event.addDomListener(marker, 'click', function() {
-                window.open('https://www.google.com/maps/search/' + markers[i[1]] + "," + markers[i][2])
+                var url = 'https://www.google.com/maps/search/' + markers[i[1]] + "," + markers[i][2];
+                window.open(url, '_blank');
             });
         }
     }

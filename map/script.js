@@ -321,8 +321,6 @@ function initMap() {
             var imgSrc = locations[i][3];
             var desc = locations[i][4];
 
-            console.log(marker[i].getPosition());
-
             var card = document.querySelector(".card");
 
             if (!card) {

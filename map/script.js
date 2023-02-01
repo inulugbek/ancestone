@@ -314,12 +314,22 @@ function initMap() {
                 });
 
         google.maps.event.addDomListener(marker, 'click', function() {
-            var card = document.createElement("div");
-            card.className = "card";
-            
+            var card = document.querySelector(".card");
+
+            if (!card) {
+                card = document.createElement("div");
+                card.className = "card";
+                card.onclick = function() {
+                    var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
+                    window.open(url, '_blank');
+                };
+                
+                document.body.appendChild(card);
+            }
+
             var img = document.createElement("img");
             img.src = imgSrc;
-            
+
             var container = document.createElement("div");
             var h4 = document.createElement("h4");
             var b = document.createElement("b");
@@ -328,19 +338,13 @@ function initMap() {
             
             var p = document.createElement("p");
             p.textContent = desc;
-            
+
             container.appendChild(h4);
             container.appendChild(p);
-            
+
+            card.innerHTML = "";
             card.appendChild(img);
             card.appendChild(container);
-
-            card.onclick = function() {
-                var url = 'https://www.google.com/maps/search/' + lat + "," + lng;
-                window.open(url, '_blank');
-              };
-            
-            document.body.appendChild(card);
         });
     }
 

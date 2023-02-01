@@ -289,11 +289,11 @@ function initMap() {
 
     // markers of stones
     var markers = [
-        [48.139188, 11.56098, 'Helene Simons', "assets/1.jpg", "*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS"],
-        [48.140536, 11.593462, 'Else Basch', "assets/2.jpg", "*1878 - 18.6.1944; DEPORTIERT 1942 THERESIENSTADT"],
-        [48.157657, 11.580811, 'Joseph Schuster', "assets/3.png", "*1873 - 23.1.1943; DEPORTIERT 1942 THERESIENSTADT"],
-        [48.122089, 11.543811, 'Emanuel Gutmann', "assets/4.jpg", "*1873 – 1943; DEPORTIERT 1942 THERESIENSTADT"],
-        [48.12004, 11.549581, 'Simon Berger', "assets/5.jpg", "*1896 - 25.11.1941; DEPORTIERT KAUNAS"],
+        [48.139188, 11.56098, 'Helene Simons', 'assets/1.jpg', '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS'],
+        [48.140536, 11.593462, 'Else Basch', 'assets/2.jpg', '*1878 - 18.6.1944; DEPORTIERT 1942 THERESIENSTADT'],
+        [48.157657, 11.580811, 'Joseph Schuster', 'assets/3.png', '*1873 - 23.1.1943; DEPORTIERT 1942 THERESIENSTADT'],
+        [48.122089, 11.543811, 'Emanuel Gutmann', 'assets/4.jpg', '*1873 – 1943; DEPORTIERT 1942 THERESIENSTADT'],
+        [48.12004, 11.549581, 'Simon Berger', 'assets/5.jpg', '*1896 - 25.11.1941; DEPORTIERT KAUNAS'],
     ];
 
     for (i = 0; i < markers.length; i++) {
@@ -312,8 +312,6 @@ function initMap() {
                         url: 'assets/pin.png'
                     },
                 });
-
-
 
         google.maps.event.addDomListener(marker, 'click', function() {
             var card = document.createElement("div");

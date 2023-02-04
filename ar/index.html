@@ -25,16 +25,23 @@
               <a-asset-item id="my-obj-woman1" src="../assets/woman1.obj"></a-asset-item>
               <a-asset-item id="my-obj-woman2" src="../assets/woman2.obj"></a-asset-item>
            </a-assets>
-
-          <a-entity 
-                id="Example"
-                obj-model="obj: #my-obj-woman1" 
-                gps-entity-place="latitude: 48.1967853; longitude: 11.4610007;" 
-                look-at="[gps-camera]" 
-                scale="0.04 0.02 0.02">
-          </a-entity>
-          
-          
+  
+            <a-gltf-model
+                gps-entity-place="latitude: 48.153897992440285; longitude: 11.55273066048333;"
+                gltf-model="https://cdn.glitch.global/0cffc0fc-0883-4b4c-90b4-a0338094eec8/1.gltf?v=1675517778677"
+                rotation="0 0 0"
+                animation="property: rotation; to: 0 360 0; loop: true; easing:linear; dur: 45000;"
+                animation-mixer
+                scale="0.01 0.01 0.01"
+            ></a-gltf-model>
+            <a-entity 
+                    id="Example1"
+                    obj-model="obj: #my-obj-woman1" 
+                    gps-entity-place="latitude: 48.153897992440285; longitude: 11.55273066048333;"
+                    look-at="[gps-camera]" 
+                    scale="0.04 0.02 0.02">
+            </a-entity>
+               
           <a-entity 
                     id="Helene Simons"
                     obj-model="obj: #my-obj-woman1" 

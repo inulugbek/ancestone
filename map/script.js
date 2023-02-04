@@ -55,7 +55,7 @@ const createElement = (marker) => {
     
     let imageEl = document.createElement("img");
     imageEl.src = image;
-    imageEl.alt = "Avatar";
+    imageEl.alt = name;
     
     let container = document.createElement("div");
     let heading = document.createElement("h4");

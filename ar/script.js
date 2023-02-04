@@ -1,5 +1,13 @@
 const locations = [
     {
+        lat: 48.1539702,
+        lng: 11.5525969,
+        name: 'Helene Simons Test',
+        images: ['../assets/1.jpg',],
+        info: '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS',
+        text: "Helene Simons was born on October 7 in Breslau. Her parents were the factory owner Max Deutschmann and Molly née Sachs (1848-1903). She was trained as a concert singer. At the age of 20, she married Dr. Hugo Neumann, an ophthalmologist from Breslau. The couple moved to Berlin. Her husband was killed in World War I. In 1922, she married Dr. Ernst Simons (1869-1934), a physician from Neuss. Both marriages remained childless. After her husband's retirement, the couple moved to Bad Reichenhall in Bavaria, owned a villa, and became friends with the pastor and his wife. The Simons couple converted to Protestantism. After the Nazi takeover and after the death of her husband, Helene Simons lost her house and had to leave the city on May 3, 1941. On June 5, 1941, she took up quarters at the Pension Royal in Munich's Bayerstrasse. On November 12, 1941, she was taken to the barracks camp at Knorrstrasse 148 and deported eastward on November 20, 1941, along with a thousand Jews from Munich. The train was originally supposed to reach Riga, but never arrived there. Helene Simons and the other passengers were shot immediately after arriving in Kaunas on November 25, 1941. This Stolperstein was initiated by Sibylle Schwarzbeck, whose grandparents were close friends of Ernst and Helene Simons, and her husband. Sibylle Schwarzbeck also gave a speech at the laying ceremony."
+    },
+    {
         lat: 48.139188,
         lng: 11.56098,
         name: 'Helene Simons',
@@ -54,6 +62,7 @@ if ("geolocation" in navigator) {
     function locationHandler(position) {
         let currentLat = position.coords.latitude;
         let currentLng = position.coords.longitude;
+        console.log(currentLat + ", " + currentLng);
 
         locations.forEach(location => {
            var result = checkLatLng(currentLat, currentLng, location.lat, location.lng);

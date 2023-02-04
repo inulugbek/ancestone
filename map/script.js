@@ -1,3 +1,5 @@
+import locations from '../script.js'
+
 const markers = [];
 
 const createElement = (marker) => {
@@ -318,45 +320,6 @@ function initMap() {
         },
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-
-    // markers of stones
-    const locations = [
-        {
-            lat: 48.139188,
-            lng: 11.56098,
-            name: 'Helene Simons',
-            image: 'assets/1.jpg',
-            info: '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS'
-        },
-        {
-            lat: 48.140536,
-            lng: 11.593462,
-            name: 'Else Basch',
-            image: 'assets/2.jpg',
-            info: '*1878 - 18.6.1944; DEPORTIERT 1942 THERESIENSTADT'
-        },
-        {
-            lat: 48.157657,
-            lng: 11.580811,
-            name: 'Joseph Schuster',
-            image: 'assets/3.png',
-            info: '*1873 - 23.1.1943; DEPORTIERT 1942 THERESIENSTADT'
-        },
-        {
-            lat: 48.122089,
-            lng: 11.543811,
-            name: 'Emanuel Gutmann',
-            image: 'assets/5.jpg',
-            info: '*1873 – 1943; DEPORTIERT 1942 THERESIENSTADT'
-        },
-        {
-            lat: 48.12004,
-            lng: 11.549581,
-            name: 'Simon Berger',
-            image: 'assets/5.jpg',
-            info: '*1896 - 25.11.1941; DEPORTIERT KAUNAS'
-        },
-    ];
 
     locations.forEach(location => {
         let marker = new google.maps.Marker({

@@ -1,7 +1,7 @@
 const locations = [
     {
-        lat: 48.1539702,
-        lng: 11.5525969,
+        lat: 48.153729218915814,
+        lng: 11.55288080886082,
         name: 'Helene Simons Test',
         images: ['../assets/1.jpg',],
         info: '*1879 - 25.11.1941; DEPORTIERT 1941 KAUNAS',

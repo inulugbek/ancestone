@@ -335,7 +335,7 @@ function initMap() {
             icon: {
                 size: new google.maps.Size(15, 30),
                 scaledSize: new google.maps.Size(15, 30),
-                url: 'assets/pin.png'
+                url: '../assets/pin.png'
             },
         });
 

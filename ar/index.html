@@ -1,18 +1,153 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <meta charset="utf-8" name="viewport" content="width=device-width" http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../style.css" />
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </head>
 <body>
-    <a-scene 
-        vr-mode-ui="enabled: false" 
-        embedded
-        arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
+    <div class="container">
+        <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;">
+            <a-camera gps-camera rotation-reader></a-camera>
+           <a-assets>
+              <a-asset-item id="my-obj-man" src="https://cdn.glitch.global/5f5a80d9-cf65-41e9-9934-39f52bf8534c/rp_dennis_posed_004_30k.obj?v=1675436664452"></a-asset-item>
+              <a-asset-item id="my-obj-woman1" src="https://cdn.glitch.global/5f5a80d9-cf65-41e9-9934-39f52bf8534c/rp_fabienne_percy_posed_001_60k.obj?v=1675436644842"></a-asset-item>
+              <a-asset-item id="my-obj-woman2" src="https://cdn.glitch.global/5f5a80d9-cf65-41e9-9934-39f52bf8534c/rp_mei_posed_001_30k.obj?v=1675436626934"></a-asset-item>
+           </a-assets>
+      
+           <a-entity 
+                    id="Example"
+                    obj-model="obj: #my-obj-woman1" 
+                    gps-entity-place="latitude: 48.1486806; longitude: 11.5802624;" 
+                    look-at="[gps-camera]" 
+                    scale="0.04 0.02 0.02">
+          </a-entity>
+          
+          
+          <a-entity 
+                    id="Helene Simons"
+                    obj-model="obj: #my-obj-woman1" 
+                    gps-entity-place="latitude: 48.139188; longitude: 11.56098;" 
+                    look-at="[gps-camera]" 
+                    scale="0.04 0.02 0.02">
+          </a-entity>
+          
+           <a-entity 
+                    id="Else Basch"
+                    obj-model="obj: #my-obj-woman2" 
+                    gps-entity-place="latitude: 48.140536; longitude: 11.593462;" 
+                    look-at="[gps-camera]" 
+                    scale="0.04 0.02 0.02">
+          </a-entity>
+          
+          
+           <a-entity 
+                    id="Joseph Schuster"
+                    obj-model="obj: #my-obj-man" 
+                    gps-entity-place="latitude: 48.157657; longitude: 11.580811;" 
+                    look-at="[gps-camera]" 
+                    scale="0.04 0.02 0.02">
+          </a-entity>
+          
+           <a-entity 
+                    id="Emanuel Gutmann"
+                    obj-model="obj: #my-obj-man" 
+                    gps-entity-place="latitude: 48.122089; longitude: 11.543811;" 
+                    look-at="[gps-camera]" 
+                    scale="0.04 0.02 0.02">
+          </a-entity>
+          
+           <a-entity 
+                    id="Simon Berger"
+                    obj-model="obj: #my-obj-man" 
+                    gps-entity-place="latitude: 48.12004; longitude: 11.549581;" 
+                    look-at="[gps-camera]" 
+                    scale="0.04 0.02 0.02">
+          </a-entity>
+          
+       </a-scene>
+      
+        <div class="d-flex justify-content-center">
+            <div style="position: absolute; bottom: 3%; left: 0; right: 0">
 
-        <a-camera gps-camera rotation-reader></a-camera>
+                <button onclick="hideBtn(this)" id="showMore" type="button" class="button-custom"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                    SHOW MORE
+                </button>
 
-    </a-scene>
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
+                    aria-labelledby="offcanvasBottomLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasBottomLabel" style="font-size: 18pt;">Else Basch</h5>
+                        <button onclick="showBtn('showMore')" id="closebtn" type="button" class="btn-close"
+                            data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+
+                    <div class="offcanvas-body small">
+
+                        <div id="carouselExampleControls" class="carousel slide" style="margin-bottom: 2%">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://cdn.glitch.global/d6727ab6-f0fb-4396-80c9-43d59a0d39fd/house.jpg?v=1675345265181"
+                                        class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://cdn.glitch.global/d6727ab6-f0fb-4396-80c9-43d59a0d39fd/stone.jpg?v=1675345245414"
+                                        class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <p style="margin-bottom: 8%" class="d-flex justify-content-center">* 1878 - † 18.6.1944 in
+                            Theresienstadt</p>
+
+                        <h1 style="font-size: 18pt;">S T O R Y</h1>
+
+                        <p class="overflow-auto" style="text-align: justify">Else Basch, born in Nuremberg on August 4,
+                            1878. Her parents were Josef Ordenstein, a hop merchant at Tegernsee and later in Munich,
+                            and Ida née Lauchheimer. She had three siblings, Ludwig (born April 25, 1877 in Nuremberg),
+                            Frieda (born 1881), and Richard (born Dec. 14, 1862, died Feb. 28, 1914). She married Julius
+                            Basch, a factory owner, in Nuremberg on January 20, 1902, and moved to Munich. The couple
+                            had a son, Ernst (see below), and lived at Steinsdorfstraße 15. Else and Julius Basch
+                            acquired the commercial building Zum schönen Turm in Kaufingerstraße, which is known today
+                            as Hirmer-Haus.
+                            The aryanized family property in Kaufingerstraße
+                            In 1926, the family moved to Widenmayerstraße 16. Her husband was deported to the Dachau
+                            concentration camp in 1938. He died in Munich on October 1, 1940. After losing her
+                            apartment, Else Basch was admitted to the Israelite Religious Community's infirmary in
+                            November 1941. On June 11, 1942, she was deported to the Theresienstadt concentration camp,
+                            where she was killed on June 18, 1944.
+                            Her son was able to emigrate in time. Her brother Ludwig Ordenstein, a merchant and single,
+                            was already murdered in Theresienstadt on August 22, 1942. A Stolperstein was made for him
+                            (Landwehrstr. 22), which is still kept.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

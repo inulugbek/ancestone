@@ -1,3 +1,7 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     margin: 0 0 55px 0;
 }
@@ -123,3 +127,62 @@ button {
   .container {
     padding: 16px;
   }
+
+img {
+    border-radius: 15px;
+}
+
+.button-custom {
+    background-color: rgba(255, 255, 28, 0);
+    color: white;
+    border-color: white;
+    padding-right: 40%;
+    padding-left: 40%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.offcanvas {
+    height: 98% !important;
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: rgba(234, 232, 232, 0.421);
+    color: black;
+}
+
+.offcanvas-header {
+    margin-left: 4%;
+    margin-top: 1%;
+    margin-right: 4%;
+    padding-left: 0%;
+    padding-right: 0%;
+    margin-bottom: 8%;
+    padding-bottom: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: black;
+}
+
+.offcanvas-body {
+    margin-top: 0%;
+    margin-left: 4% !important;
+    margin-right: 4% !important;
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.offcanvas-body::-webkit-scrollbar{
+    display: none !important;
+  }
+
+.offcanvas-title {
+    font-size: 18pt;
+    color: black;
+}

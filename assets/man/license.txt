@@ -1,0 +1,11 @@
+Model Information:
+* title:	Me (Dean) 3D figure scan
+* source:	https://sketchfab.com/3d-models/me-dean-3d-figure-scan-787112f5a651449685a90ae96b343742
+* author:	punchdigital (https://sketchfab.com/punchdigital)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Me (Dean) 3D figure scan" (https://sketchfab.com/3d-models/me-dean-3d-figure-scan-787112f5a651449685a90ae96b343742) by punchdigital (https://sketchfab.com/punchdigital) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

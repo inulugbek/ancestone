@@ -1,9 +1,9 @@
 const locations = [
     {
-        lat: 48.153897992440285,
-        lng: 11.55273066048333,
-        name: 'Helene Simons Test',
-        images: ['../assets/1.jpg',],
+        lat: 48.134115332071374,
+        lng: 11.585918993356183,
+        name: 'Test TEST',
+        images: ['../assets/1.jpg', '../assets/2-1.jpg',],
         info: 'TESTSTSTST',
         text: "Helene Simons was born on October 7 in Breslau. Her parents were the factory owner Max Deutschmann and Molly née Sachs (1848-1903). She was trained as a concert singer. At the age of 20, she married Dr. Hugo Neumann, an ophthalmologist from Breslau. The couple moved to Berlin. Her husband was killed in World War I. In 1922, she married Dr. Ernst Simons (1869-1934), a physician from Neuss. Both marriages remained childless. After her husband's retirement, the couple moved to Bad Reichenhall in Bavaria, owned a villa, and became friends with the pastor and his wife. The Simons couple converted to Protestantism. After the Nazi takeover and after the death of her husband, Helene Simons lost her house and had to leave the city on May 3, 1941. On June 5, 1941, she took up quarters at the Pension Royal in Munich's Bayerstrasse. On November 12, 1941, she was taken to the barracks camp at Knorrstrasse 148 and deported eastward on November 20, 1941, along with a thousand Jews from Munich. The train was originally supposed to reach Riga, but never arrived there. Helene Simons and the other passengers were shot immediately after arriving in Kaunas on November 25, 1941. This Stolperstein was initiated by Sibylle Schwarzbeck, whose grandparents were close friends of Ernst and Helene Simons, and her husband. Sibylle Schwarzbeck also gave a speech at the laying ceremony."
     },
